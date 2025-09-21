@@ -20,14 +20,17 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Prerequisites
 
-1.  **Python**: Ensure you have Python 3.8+ installed.
+1.  **Python**: Ensure you have Python 3.8+ installed. You can check your version by running `python3 --version` or `python --version`.
 2.  **Ollama**: You must have [Ollama](https://ollama.com/) installed and running on your system.
 3.  **Llama 3 Model**: Pull the Llama 3 model by running the following command in your terminal:
     ```sh
     ollama pull llama3
+    run ollama llama3
     ```
 
 ### 📦 Installation
+
+These steps include setting up a virtual environment, which is the recommended way to handle Python project dependencies.
 
 1.  **Clone the repository:** (Replace `your-username` with your actual GitHub username)
     ```sh
@@ -39,38 +42,67 @@ Follow these instructions to get a copy of the project up and running on your lo
     cd langchain-ollama-chatbot
     ```
 
-3.  **Create a `requirements.txt` file** in your project directory with the following content:
-    ```
-    langchain-core
-    langchain-ollama
-    ```
+3.  **Create and Activate a Virtual Environment:** This isolates the project's dependencies from your system.
 
-4.  **Install the required Python packages:**
-    ```sh
-    pip install -r requirements.txt
-    ```
+    * First, create the environment:
+        ```sh
+        python3 -m venv chatbot 
+        ```
+    * Next, activate it. The command differs based on your operating system:
+
+        * **On macOS / Linux:**
+            ```sh
+            source chatbot/bin/activate
+            ```
+        * **On Windows (Command Prompt or PowerShell):**
+            ```sh
+            .\venv\Scripts\activate
+            ```
+    * *(Your terminal prompt should now change to show `(venv)` at the beginning.)*
+
+4.  **Install Required Packages:**
+
+    * First, ensure you have a `requirements.txt` file in your project directory with this content:
+        ```
+        langchain-core
+        langchain-ollama
+        ```
+    * Now, install the packages into your active virtual environment:
+        ```sh
+        pip install langchain langchain-ollama ollama 
+        ```
 
 ---
 
 ## ▶️ Usage
 
-1.  Make sure your Ollama application is running in the background.
+1.  Make sure your Ollama application is running in the background and that your virtual environment is activated (you should see `(venv)` in your prompt).
 
 2.  Run the chatbot script from your terminal:
     ```sh
-    python main.py  # Or whatever you name your script
+    python3 main.py  # Or whatever you name your script
     ```
 
 3.  Start chatting! Type your message and press Enter. To end the session, type `exit`.
 
+    *(**Tip**: If the script gets stuck, you can force it to stop by pressing `Ctrl+C`.)*
+
+4.  When you're finished, you can deactivate the virtual environment by simply typing:
+    ```sh
+    deactivate
+    ```
+
 **Example Interaction:**
 ```
+(venv) $ python3 main.py
 Welcome to the AI ChatBot , Type 'exit' to quit. 
 You: Hi, my name is Alex.
 Bot:  Hello Alex! It's nice to meet you. How can I help you today?
 You: What is my name?
 Bot:  Your name is Alex.
 You: exit
+(venv) $ deactivate
+$
 ```
 
 ---
